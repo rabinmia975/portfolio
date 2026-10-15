@@ -137,7 +137,7 @@
 
 <!-- Stats -->
 <section class="py-14 px-4 sm:px-6 border-y border-[#161616]">
-  <div class="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-6 fade-up" id="statsGrid"></div>
+  <div class="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-6" id="statsGrid"></div>
 </section>
 
 <!-- About -->
@@ -178,7 +178,7 @@
       <p class="text-xs font-bold tracking-[0.3em] text-brand-500 mb-2">MY EXPERTISE</p>
       <h2 class="text-3xl sm:text-5xl font-black text-white tracking-tight">Design <span class="grad-text">&</span> Development Skill</h2>
     </div>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 fade-up" id="skillsGrid"></div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6" id="skillsGrid"></div>
     <div class="mt-8 fade-up">
       <div class="rounded-2xl bg-[#0d0d0d] border border-[#1f1f1f] px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 card-hover">
         <div class="text-center sm:text-left">
@@ -320,11 +320,11 @@ if(window.gsap&&window.ScrollTrigger){
   gsap.from(el,{y:45,opacity:0,duration:.9,ease:'power3.out',
    scrollTrigger:{trigger:el,start:'top 85%',once:true}})});
  // staggered card grids
- gsap.from('#statsGrid > *',{y:35,opacity:0,duration:.7,stagger:.12,ease:'power3.out',
+ gsap.from('#statsGrid > *',{y:24,opacity:0,duration:.7,stagger:.12,ease:'power3.out',clearProps:'transform,opacity',
   scrollTrigger:{trigger:'#statsGrid',start:'top 90%',once:true}});
- gsap.from('#skillsGrid > *',{y:45,opacity:0,duration:.7,stagger:.07,ease:'power3.out',
+ gsap.from('#skillsGrid > *',{y:24,opacity:0,duration:.55,stagger:.06,ease:'power3.out',clearProps:'transform,opacity',
   scrollTrigger:{trigger:'#skillsGrid',start:'top 85%',once:true}});
- gsap.from('#projectsGrid > *',{y:45,opacity:0,duration:.7,stagger:.06,ease:'power3.out',
+ gsap.from('#projectsGrid > *',{y:24,opacity:0,duration:.55,stagger:.05,ease:'power3.out',clearProps:'transform,opacity',
   scrollTrigger:{trigger:'#projectsGrid',start:'top 85%',once:true}});
  // skill bars
  gsap.utils.toArray('.skill-bar').forEach(function(bar){
