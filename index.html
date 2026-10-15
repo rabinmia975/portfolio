@@ -6,144 +6,169 @@
 <title>Rabin Mia — Full-Stack Developer. I Build Anything with AI.</title>
 <meta name="description" content="Rabin Mia — Full-stack web developer from Bangladesh. Laravel, React, Vue, TypeScript, Tailwind. With my skills and AI, I can build anything.">
 <link rel="icon" href="assets/profile.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/tw.css">
 <style>
-  .typing::after{content:'|';animation:blink 1s step-end infinite}
-  @keyframes blink{50%{opacity:0}}
+  body{font-family:'Poppins',-apple-system,'Segoe UI',Roboto,sans-serif}
+  .ghost{color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.08)}
   .fade-up{opacity:0;transform:translateY(26px);transition:all .8s cubic-bezier(.16,1,.3,1)}
   .fade-up.visible{opacity:1;transform:translateY(0)}
-  .card-hover{transition:transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s ease}
-  .card-hover:hover{transform:translateY(-6px);box-shadow:0 24px 48px -16px rgba(2,6,23,.25)}
-  .grad-text{background:linear-gradient(92deg,#14b8a6,#06b6d4);-webkit-background-clip:text;background-clip:text;color:transparent}
-  .ai-badge{background:linear-gradient(92deg,#14b8a6,#06b6d4)}
+  .card-hover{transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s ease,border-color .35s ease}
+  .card-hover:hover{transform:translateY(-6px);border-color:rgba(255,77,77,.5);box-shadow:0 24px 48px -16px rgba(255,77,77,.15)}
+  .grad-text{color:#ff4d4d}
   .shot{transition:transform .5s cubic-bezier(.16,1,.3,1)}
   .proj-card:hover .shot{transform:scale(1.07)}
-  .blob{position:absolute;border-radius:9999px;filter:blur(90px);opacity:.5;animation:blob 14s ease-in-out infinite}
+  .blob{position:absolute;border-radius:9999px;filter:blur(110px);opacity:.14;animation:blob 14s ease-in-out infinite}
   .blob-2{animation-delay:-7s}
   @keyframes blob{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(30px,-40px) scale(1.1)}66%{transform:translate(-25px,25px) scale(.95)}}
-  .grid-pattern{background-image:linear-gradient(to right,rgba(100,116,139,.12) 1px,transparent 1px),linear-gradient(to bottom,rgba(100,116,139,.12) 1px,transparent 1px);background-size:44px 44px}
   .float-anim{animation:floaty 5s ease-in-out infinite}
-  .float-anim-2{animation:floaty 6s ease-in-out -2.5s infinite}
   @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
   .glass{backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
-  .tilt{transform-style:preserve-3d;will-change:transform;transition:transform .18s ease-out}
-  .shine{position:relative;overflow:hidden}
-  .shine::after{content:'';position:absolute;inset:0;background:radial-gradient(600px circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.14),transparent 40%);opacity:0;transition:opacity .3s}
-  .shine:hover::after{opacity:1}
-  ::selection{background:#14b8a6;color:#fff}
+  ::selection{background:#ff4d4d;color:#fff}
+  ::-webkit-scrollbar{width:9px}
+  ::-webkit-scrollbar-track{background:#000}
+  ::-webkit-scrollbar-thumb{background:#262626;border-radius:99px}
+  ::-webkit-scrollbar-thumb:hover{background:#ff4d4d}
+  .link-underline{position:relative}
+  .link-underline::after{content:'';position:absolute;left:0;bottom:-4px;width:0;height:2px;background:#ff4d4d;transition:width .3s ease}
+  .link-underline:hover::after{width:100%}
 </style>
 </head>
-<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-200 antialiased transition-colors duration-300">
+<body class="bg-black text-neutral-300 antialiased">
 
 <!-- Navbar -->
-<nav class="fixed top-0 inset-x-0 z-50 glass bg-white/70 dark:bg-slate-950/70 border-b border-slate-200/60 dark:border-slate-800/60">
+<nav class="fixed top-0 inset-x-0 z-50 glass bg-black/70 border-b border-[#161616]">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-    <a href="#home" class="font-extrabold text-xl tracking-tight">rabin<span class="text-brand-500">.dev</span></a>
+    <a href="#home" class="flex items-center gap-2 text-xl font-extrabold text-white">
+      <svg class="w-6 h-6 text-brand-500" fill="currentColor" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>rabin<span class="text-brand-500">.dev</span>
+    </a>
     <div class="hidden md:flex items-center gap-8 text-sm font-medium">
-      <a href="#about" class="hover:text-brand-500 transition">About</a>
-      <a href="#skills" class="hover:text-brand-500 transition">Skills</a>
-      <a href="#projects" class="hover:text-brand-500 transition">Work</a>
-      <a href="#contact" class="hover:text-brand-500 transition">Contact</a>
+      <a href="#home" class="link-underline hover:text-white transition">Home</a>
+      <a href="#about" class="link-underline hover:text-white transition">About</a>
+      <a href="#skills" class="link-underline hover:text-white transition">Skills</a>
+      <a href="#projects" class="link-underline hover:text-white transition">Project</a>
+      <a href="#contact" class="link-underline hover:text-white transition">Contact</a>
     </div>
     <div class="flex items-center gap-3">
-      <button id="themeToggle" aria-label="Toggle dark mode" class="p-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 transition">
-        <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
-        <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
-      </button>
-      <a href="#contact" class="hidden sm:inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold px-4 py-2 rounded-xl transition shadow-lg shadow-brand-600/25">Hire Me</a>
-      <button id="menuBtn" aria-label="Menu" class="md:hidden p-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800">
+      <a href="https://github.com/rabinmia975" target="_blank" rel="noopener" class="hidden sm:block p-2 rounded-full border border-[#262626] hover:border-brand-500 hover:text-brand-500 transition" aria-label="GitHub">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-1.97c-3.2.7-3.87-1.54-3.87-1.54-.53-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 015.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.66.41.36.78 1.06.78 2.14v3.17c0 .31.21.68.8.56A10.52 10.52 0 0023.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
+      </a>
+      <a href="#contact" class="hidden sm:inline-flex items-center gap-2 bg-brand-500 hover:bg-brand-600 text-white text-sm font-semibold px-5 py-2.5 rounded-full transition shadow-lg shadow-brand-500/25">Hire Me</a>
+      <button id="menuBtn" aria-label="Menu" class="md:hidden p-2 rounded-full border border-[#262626]">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
       </button>
     </div>
   </div>
-  <div id="mobileMenu" class="hidden md:hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-4 py-4 flex-col gap-4 text-sm font-medium">
-    <a href="#about" class="block py-1">About</a>
-    <a href="#skills" class="block py-1">Skills</a>
-    <a href="#projects" class="block py-1">Work</a>
-    <a href="#contact" class="block py-1">Contact</a>
+  <div id="mobileMenu" class="hidden md:hidden border-t border-[#161616] bg-black px-4 py-4 flex-col gap-4 text-sm font-medium">
+    <a href="#home" class="block py-1.5 hover:text-brand-500">Home</a>
+    <a href="#about" class="block py-1.5 hover:text-brand-500">About</a>
+    <a href="#skills" class="block py-1.5 hover:text-brand-500">Skills</a>
+    <a href="#projects" class="block py-1.5 hover:text-brand-500">Project</a>
+    <a href="#contact" class="block py-1.5 hover:text-brand-500">Contact</a>
   </div>
 </nav>
 
-<!-- Hero / Banner -->
-<header id="home" class="relative overflow-hidden pt-28 pb-20 px-4 sm:px-6">
-  <div class="absolute inset-0 grid-pattern"></div>
-  <div class="blob w-[480px] h-[480px] bg-brand-400/40 dark:bg-brand-600/20 -top-40 -left-40"></div>
-  <div class="blob blob-2 w-[420px] h-[420px] bg-cyan-400/40 dark:bg-cyan-700/20 top-20 -right-32"></div>
-  <div class="max-w-7xl mx-auto relative flex flex-col-reverse lg:flex-row items-center gap-12">
-    <!-- Full image banner -->
-    <div class="relative flex-shrink-0 w-full max-w-sm lg:max-w-md">
-      <div class="absolute -inset-3 ai-badge rounded-[2rem] opacity-20 blur-2xl"></div>
-      <div class="tilt shine relative rounded-[2rem] p-[3px] bg-gradient-to-br from-brand-400 via-cyan-400 to-brand-600 shadow-2xl shadow-brand-600/25">
-        <img src="assets/profile.png" alt="Rabin Mia" class="w-full rounded-[1.8rem] object-cover aspect-[4/5] bg-slate-100 dark:bg-slate-900">
-      </div>
-      <div class="float-anim absolute -top-4 -right-3 glass bg-white/90 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 rounded-xl px-3.5 py-2 text-xs font-bold shadow-lg flex items-center gap-1.5">
-        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Available for work
-      </div>
-      <div class="float-anim-2 absolute -bottom-4 -left-3 glass bg-white/90 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 rounded-xl px-3.5 py-2 shadow-lg flex items-center gap-1.5 text-xs font-bold grad-text">
-        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg> AI-Powered Builder
+<!-- Hero (Reeni style) -->
+<header id="home" class="relative overflow-hidden pt-28 pb-16 px-4 sm:px-6">
+  <div class="blob w-[500px] h-[500px] bg-brand-500 -top-40 -left-40"></div>
+  <div class="blob blob-2 w-[420px] h-[420px] bg-brand-500 top-24 -right-32"></div>
+  <div class="max-w-7xl mx-auto relative grid lg:grid-cols-12 gap-10 items-center">
+    <!-- Left: name -->
+    <div class="lg:col-span-4 text-center lg:text-left">
+      <p class="text-sm font-semibold tracking-[0.35em] text-neutral-500 mb-3">HELLO I'M</p>
+      <h1 class="text-5xl sm:text-6xl xl:text-7xl font-black text-white tracking-tight leading-[1.05] mb-4">Rabin<br>Mia<span class="text-brand-500">.</span></h1>
+      <p class="text-lg font-semibold text-neutral-200 mb-3">Full-Stack Web Developer</p>
+      <p class="text-sm text-neutral-500 mb-8 max-w-xs mx-auto lg:mx-0 leading-relaxed">With my skills <span class="grad-text font-semibold">+ AI</span>, I can build anything.</p>
+      <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
+        <a href="#projects" class="inline-flex items-center gap-2 bg-brand-500 hover:bg-brand-600 text-white font-semibold px-7 py-3.5 rounded-full transition shadow-xl shadow-brand-500/30 hover:-translate-y-0.5">View Portfolio
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
       </div>
     </div>
-    <!-- Text -->
-    <div class="flex-1 text-center lg:text-left">
-      <div class="inline-flex items-center gap-2 rounded-full ai-badge text-white text-xs font-bold px-4 py-1.5 mb-5 shadow-lg shadow-brand-500/30">
-        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-        AI-POWERED FULL-STACK DEVELOPER
+    <!-- Center: portrait -->
+    <div class="lg:col-span-4 relative flex justify-center">
+      <p class="ghost absolute -top-8 lg:-top-16 left-1/2 -translate-x-1/2 text-7xl sm:text-8xl font-black whitespace-nowrap pointer-events-none select-none">PORTFOLIO</p>
+      <div class="relative mt-6 lg:mt-14">
+        <div class="absolute -inset-4 bg-brand-500/20 blur-3xl rounded-[2.5rem]"></div>
+        <img src="assets/profile.png" alt="Rabin Mia" class="relative w-72 sm:w-80 lg:w-full max-w-sm rounded-[2rem] border-2 border-[#1f1f1f] shadow-2xl shadow-brand-500/10 object-cover aspect-[4/5]">
+        <div class="float-anim absolute -top-4 -right-3 glass bg-[#0d0d0d]/90 border border-[#262626] rounded-full px-4 py-2 text-xs font-bold text-white shadow-lg flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span> Available for work
+        </div>
+        <div class="float-anim absolute -bottom-4 -left-3 glass bg-[#0d0d0d]/90 border border-[#262626] rounded-full px-4 py-2 text-xs font-bold shadow-lg text-brand-500 flex items-center gap-1.5">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg> AI-Powered Builder
+        </div>
       </div>
-      <h1 class="text-5xl sm:text-7xl font-black tracking-tight mb-3 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-600 dark:from-white dark:via-slate-200 dark:to-slate-400 bg-clip-text text-transparent">Rabin Mia</h1>
-      <p class="text-lg sm:text-2xl font-bold mb-5 h-8"><span id="typing" class="typing grad-text"></span></p>
-      <p class="text-2xl sm:text-4xl font-extrabold mb-6 max-w-2xl mx-auto lg:mx-0 leading-tight">
-        With my skills <span class="grad-text">+ AI</span>,<br>I can build <span class="relative inline-block">anything<span class="absolute left-0 -bottom-1 w-full h-1.5 rounded-full bg-gradient-to-r from-brand-500 to-cyan-500"></span></span>.
-      </p>
-      <p class="text-slate-600 dark:text-slate-400 max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed">
-        Full-stack web developer from Bangladesh — building scalable, high-performance web applications from concept to deployment.
-      </p>
-      <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
-        <a href="#projects" class="bg-brand-600 hover:bg-brand-700 text-white font-semibold px-7 py-3.5 rounded-xl transition shadow-xl shadow-brand-600/30 hover:-translate-y-0.5">View My Work</a>
-        <a href="#contact" class="glass border border-slate-300 dark:border-slate-700 bg-white/60 dark:bg-slate-900/60 hover:border-brand-500 hover:text-brand-500 font-semibold px-7 py-3.5 rounded-xl transition hover:-translate-y-0.5">Get In Touch</a>
+    </div>
+    <!-- Right: about quick -->
+    <div class="lg:col-span-4 space-y-7">
+      <div>
+        <h2 class="text-xl font-bold text-white mb-3">About Me</h2>
+        <p class="text-sm text-neutral-500 leading-relaxed">I'm a full-stack web developer from Bangladesh, building scalable, high-performance web applications from concept to deployment. Core stack: Laravel, PHP, MySQL, JavaScript, TypeScript, React, Vue.js and Tailwind CSS.</p>
       </div>
-      <div class="flex gap-3 justify-center lg:justify-start mt-8">
-        <a href="https://github.com/rabinmia975" target="_blank" rel="noopener" class="p-2.5 rounded-xl border border-slate-300 dark:border-slate-700 hover:border-brand-500 hover:text-brand-500 transition" aria-label="GitHub">
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-1.97c-3.2.7-3.87-1.54-3.87-1.54-.53-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 015.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.66.41.36.78 1.06.78 2.14v3.17c0 .31.21.68.8.56A10.52 10.52 0 0023.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
-        </a>
-        <a href="mailto:rabinmia795@gmail.com" class="p-2.5 rounded-xl border border-slate-300 dark:border-slate-700 hover:border-brand-500 hover:text-brand-500 transition" aria-label="Email">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-        </a>
-        <a href="https://wa.me/8801320325852" target="_blank" rel="noopener" class="p-2.5 rounded-xl border border-slate-300 dark:border-slate-700 hover:border-green-600 hover:text-green-600 transition" aria-label="WhatsApp">
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413A11.815 11.815 0 0012.05 0zm5.995 17.098c-.253.71-1.47 1.356-2.03 1.413-.512.077-1.16.108-1.872-.118-.432-.136-.988-.32-1.698-.627-2.98-1.388-4.926-4.405-5.075-4.603-.148-.199-1.212-1.612-1.212-3.075 0-1.462.767-2.182 1.039-2.48.272-.297.594-.371.792-.371.199 0 .398.002.572.01.174.009.406-.066.638.495.235.579.802 2.043.872 2.19.074.15.124.323.025.52-.1.199-.174.323-.347.52-.174.198-.363.44-.521.586-.174.174-.355.364-.153.713.202.349.899 1.477 1.93 2.396 1.325 1.18 2.444 1.548 2.796 1.724.352.176.558.147.765-.092.202-.235.862-.998 1.093-1.341.231-.344.463-.287.779-.172.316.115 2.009.949 2.355 1.122.347.174.578.26.664.407.086.147.086.847-.167 1.666z"/></svg>
-        </a>
-        <a href="https://www.google.com/maps/search/?api=1&query=Dhaka,+Bangladesh" target="_blank" rel="noopener" class="p-2.5 rounded-xl border border-slate-300 dark:border-slate-700 hover:border-brand-500 hover:text-brand-500 transition" aria-label="Location">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-        </a>
+      <div class="space-y-3 text-sm">
+        <div class="flex items-center gap-3">
+          <span class="text-brand-500 font-semibold tracking-wider text-xs w-20">CALL NOW</span>
+          <a href="tel:+8801320325852" class="hover:text-white transition font-medium">01320325852</a>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="text-brand-500 font-semibold tracking-wider text-xs w-20">MAIL US</span>
+          <a href="mailto:rabinmia795@gmail.com" class="hover:text-white transition font-medium break-all">rabinmia795@gmail.com</a>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="text-brand-500 font-semibold tracking-wider text-xs w-20">MY ADDRESS</span>
+          <span class="font-medium">Dhaka, Bangladesh</span>
+        </div>
+      </div>
+      <div>
+        <h2 class="text-xl font-bold text-white mb-3">Find Me On</h2>
+        <div class="flex gap-3">
+          <a href="https://github.com/rabinmia975" target="_blank" rel="noopener" class="p-2.5 rounded-full border border-[#262626] hover:border-brand-500 hover:text-brand-500 transition" aria-label="GitHub">
+            <svg class="w-4.5 h-4.5" width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-1.97c-3.2.7-3.87-1.54-3.87-1.54-.53-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 015.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.66.41.36.78 1.06.78 2.14v3.17c0 .31.21.68.8.56A10.52 10.52 0 0023.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
+          </a>
+          <a href="https://wa.me/8801320325852" target="_blank" rel="noopener" class="p-2.5 rounded-full border border-[#262626] hover:border-brand-500 hover:text-brand-500 transition" aria-label="WhatsApp">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413A11.815 11.815 0 0012.05 0zm5.995 17.098c-.253.71-1.47 1.356-2.03 1.413-.512.077-1.16.108-1.872-.118-.432-.136-.988-.32-1.698-.627-2.98-1.388-4.926-4.405-5.075-4.603-.148-.199-1.212-1.612-1.212-3.075 0-1.462.767-2.182 1.039-2.48.272-.297.594-.371.792-.371.199 0 .398.002.572.01.174.009.406-.066.638.495.235.579.802 2.043.872 2.19.074.15.124.323.025.52-.1.199-.174.323-.347.52-.174.198-.363.44-.521.586-.174.174-.355.364-.153.713.202.349.899 1.477 1.93 2.396 1.325 1.18 2.444 1.548 2.796 1.724.352.176.558.147.765-.092.202-.235.862-.998 1.093-1.341.231-.344.463-.287.779-.172.316.115 2.009.949 2.355 1.122.347.174.578.26.664.407.086.147.086.847-.167 1.666z"/></svg>
+          </a>
+          <a href="mailto:rabinmia795@gmail.com" class="p-2.5 rounded-full border border-[#262626] hover:border-brand-500 hover:text-brand-500 transition" aria-label="Email">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </a>
+        </div>
       </div>
     </div>
   </div>
 </header>
 
+<!-- Stats -->
+<section class="py-14 px-4 sm:px-6 border-y border-[#161616]">
+  <div class="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-6 fade-up" id="statsGrid"></div>
+</section>
+
 <!-- About -->
-<section id="about" class="py-20 px-4 sm:px-6 bg-white dark:bg-slate-900/50">
+<section id="about" class="py-20 px-4 sm:px-6">
   <div class="max-w-7xl mx-auto">
-    <div class="fade-up">
-      <h2 class="text-3xl sm:text-4xl font-extrabold mb-4">About <span class="grad-text">Me</span></h2>
-      <div class="h-1 w-16 rounded-full bg-gradient-to-r from-brand-500 to-cyan-500 mb-10"></div>
+    <div class="fade-up mb-12">
+      <p class="text-xs font-bold tracking-[0.3em] text-brand-500 mb-2">WHO I AM</p>
+      <h2 class="text-3xl sm:text-5xl font-black text-white tracking-tight">About <span class="grad-text">Me</span></h2>
     </div>
     <div class="grid md:grid-cols-3 gap-8 fade-up">
-      <div class="md:col-span-2 space-y-4 text-slate-600 dark:text-slate-400 leading-relaxed">
+      <div class="md:col-span-2 space-y-4 text-neutral-500 leading-relaxed text-sm sm:text-base">
         <p>I'm a full-stack web developer based in Bangladesh, passionate about building scalable, high-performance web applications from concept to deployment. I specialize in developing end-to-end solutions, covering everything from database design and backend architecture to modern, responsive, and user-friendly frontends.</p>
-        <p>My core tech stack includes <strong class="text-slate-800 dark:text-slate-200">Laravel, PHP, MySQL, JavaScript, TypeScript, React, Vue.js, and Tailwind CSS</strong>, along with Docker for containerization and streamlined development workflows. I focus on writing clean, maintainable code, designing efficient APIs, and building secure, scalable applications.</p>
+        <p>My core tech stack includes <strong class="text-white">Laravel, PHP, MySQL, JavaScript, TypeScript, React, Vue.js, and Tailwind CSS</strong>, along with Docker for containerization and streamlined development workflows. I focus on writing clean, maintainable code, designing efficient APIs, and building secure, scalable applications.</p>
         <p>From blood donation platforms and e-commerce systems to booking applications and complex web platforms, I enjoy transforming ideas into practical digital solutions. I'm always exploring new technologies, tackling challenging problems, and discovering better ways to build reliable, innovative software — and with <strong class="grad-text">AI by my side</strong>, there's nothing that can't be built.</p>
       </div>
       <div class="space-y-4">
-        <div class="rounded-2xl border border-slate-200 dark:border-slate-800 p-5 hover:border-brand-400 transition">
-          <p class="text-sm text-slate-500">Phone</p>
-          <p class="font-semibold"><a href="tel:+8801320325852" class="hover:text-brand-500 transition">01320325852</a></p>
+        <div class="rounded-2xl bg-[#0d0d0d] border border-[#1f1f1f] p-5 card-hover">
+          <p class="text-xs text-neutral-600 font-semibold tracking-widest mb-1">PHONE</p>
+          <p class="font-semibold text-white"><a href="tel:+8801320325852" class="hover:text-brand-500 transition">01320325852</a></p>
         </div>
-        <div class="rounded-2xl border border-slate-200 dark:border-slate-800 p-5 hover:border-brand-400 transition">
-          <p class="text-sm text-slate-500">Email</p>
-          <p class="font-semibold break-all"><a href="mailto:rabinmia795@gmail.com" class="hover:text-brand-500 transition">rabinmia795@gmail.com</a></p>
+        <div class="rounded-2xl bg-[#0d0d0d] border border-[#1f1f1f] p-5 card-hover">
+          <p class="text-xs text-neutral-600 font-semibold tracking-widest mb-1">EMAIL</p>
+          <p class="font-semibold text-white break-all"><a href="mailto:rabinmia795@gmail.com" class="hover:text-brand-500 transition">rabinmia795@gmail.com</a></p>
         </div>
-        <div class="rounded-2xl border border-slate-200 dark:border-slate-800 p-5 hover:border-green-500 transition">
-          <p class="text-sm text-slate-500">WhatsApp</p>
-          <p class="font-semibold"><a href="https://wa.me/8801320325852" target="_blank" rel="noopener" class="inline-flex items-center gap-2 hover:text-green-600 transition"><svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 24 24"><path d="M12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413A11.815 11.815 0 0012.05 0zm5.995 17.098c-.253.71-1.47 1.356-2.03 1.413-.512.077-1.16.108-1.872-.118-.432-.136-.988-.32-1.698-.627-2.98-1.388-4.926-4.405-5.075-4.603-.148-.199-1.212-1.612-1.212-3.075 0-1.462.767-2.182 1.039-2.48.272-.297.594-.371.792-.371.199 0 .398.002.572.01.174.009.406-.066.638.495.235.579.802 2.043.872 2.19.074.15.124.323.025.52-.1.199-.174.323-.347.52-.174.198-.363.44-.521.586-.174.174-.355.364-.153.713.202.349.899 1.477 1.93 2.396 1.325 1.18 2.444 1.548 2.796 1.724.352.176.558.147.765-.092.202-.235.862-.998 1.093-1.341.231-.344.463-.287.779-.172.316.115 2.009.949 2.355 1.122.347.174.578.26.664.407.086.147.086.847-.167 1.666z"/></svg>01320325852</a></p>
+        <div class="rounded-2xl bg-[#0d0d0d] border border-[#1f1f1f] p-5 card-hover">
+          <p class="text-xs text-neutral-600 font-semibold tracking-widest mb-1">WHATSAPP</p>
+          <p class="font-semibold text-white"><a href="https://wa.me/8801320325852" target="_blank" rel="noopener" class="hover:text-brand-500 transition">01320325852</a></p>
         </div>
       </div>
     </div>
@@ -151,34 +176,32 @@
 </section>
 
 <!-- Skills -->
-<section id="skills" class="py-20 px-4 sm:px-6">
+<section id="skills" class="py-20 px-4 sm:px-6 border-t border-[#161616]">
   <div class="max-w-7xl mx-auto">
-    <div class="fade-up">
-      <h2 class="text-3xl sm:text-4xl font-extrabold mb-4">My <span class="grad-text">Skills</span></h2>
-      <div class="h-1 w-16 rounded-full bg-gradient-to-r from-brand-500 to-cyan-500 mb-10"></div>
+    <div class="fade-up mb-12">
+      <p class="text-xs font-bold tracking-[0.3em] text-brand-500 mb-2">MY EXPERTISE</p>
+      <h2 class="text-3xl sm:text-5xl font-black text-white tracking-tight">Design <span class="grad-text">&</span> Development Skill</h2>
     </div>
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 fade-up" id="skillsGrid"></div>
     <div class="mt-8 fade-up">
-      <div class="rounded-2xl ai-badge p-[1.5px] shadow-xl shadow-brand-500/20">
-        <div class="rounded-2xl bg-white dark:bg-slate-900 px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div class="text-center sm:text-left">
-            <p class="font-extrabold text-lg mb-1">⚡ Anything with AI</p>
-            <p class="text-sm text-slate-500 dark:text-slate-400">Full-stack skills + AI tools = unlimited possibilities. If it can be imagined, it can be built.</p>
-          </div>
-          <a href="#contact" class="shrink-0 bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition">Start a Project</a>
+      <div class="rounded-2xl bg-[#0d0d0d] border border-[#1f1f1f] px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 card-hover">
+        <div class="text-center sm:text-left">
+          <p class="font-extrabold text-lg text-white mb-1">Anything with <span class="grad-text">AI</span></p>
+          <p class="text-sm text-neutral-500">Full-stack skills + AI tools = unlimited possibilities. If it can be imagined, it can be built.</p>
         </div>
+        <a href="#contact" class="shrink-0 bg-brand-500 hover:bg-brand-600 text-white text-sm font-semibold px-5 py-2.5 rounded-full transition">Start a Project</a>
       </div>
     </div>
   </div>
 </section>
 
 <!-- Projects -->
-<section id="projects" class="py-20 px-4 sm:px-6 bg-white dark:bg-slate-900/50">
+<section id="projects" class="py-20 px-4 sm:px-6 border-t border-[#161616]">
   <div class="max-w-7xl mx-auto">
-    <div class="fade-up flex flex-wrap items-end justify-between gap-4 mb-10">
+    <div class="fade-up flex flex-wrap items-end justify-between gap-4 mb-12">
       <div>
-        <h2 class="text-3xl sm:text-4xl font-extrabold mb-4">Featured <span class="grad-text">Work</span></h2>
-        <div class="h-1 w-16 rounded-full bg-gradient-to-r from-brand-500 to-cyan-500"></div>
+        <p class="text-xs font-bold tracking-[0.3em] text-brand-500 mb-2">LATEST PORTFOLIO</p>
+        <h2 class="text-3xl sm:text-5xl font-black text-white tracking-tight">Transforming Ideas into <span class="grad-text">Exceptional</span></h2>
       </div>
       <div class="flex flex-wrap gap-2" id="filterBtns"></div>
     </div>
@@ -187,49 +210,48 @@
 </section>
 
 <!-- Contact -->
-<section id="contact" class="relative overflow-hidden py-20 px-4 sm:px-6">
-  <div class="blob w-96 h-96 bg-brand-400/30 dark:bg-brand-700/20 -top-20 left-1/4"></div>
-  <div class="blob blob-2 w-96 h-96 bg-cyan-400/30 dark:bg-cyan-800/20 bottom-0 right-1/4"></div>
+<section id="contact" class="relative overflow-hidden py-20 px-4 sm:px-6 border-t border-[#161616]">
+  <div class="blob w-96 h-96 bg-brand-500 -top-20 left-1/4"></div>
   <div class="max-w-3xl mx-auto relative text-center fade-up">
-    <h2 class="text-3xl sm:text-4xl font-extrabold mb-4">Get In <span class="grad-text">Touch</span></h2>
-    <div class="h-1 w-16 rounded-full bg-gradient-to-r from-brand-500 to-cyan-500 mb-8 mx-auto"></div>
-    <p class="text-slate-600 dark:text-slate-400 mb-10 max-w-xl mx-auto">Have a project in mind or want to collaborate? Send me a message — I usually reply within a day.</p>
+    <p class="text-xs font-bold tracking-[0.3em] text-brand-500 mb-2">CONTACT</p>
+    <h2 class="text-3xl sm:text-5xl font-black text-white tracking-tight mb-6">Let's Work <span class="grad-text">Together</span></h2>
+    <p class="text-neutral-500 mb-10 max-w-xl mx-auto text-sm sm:text-base">Have a project in mind or want to collaborate? Contact me, and let's start building something. I usually reply within a day.</p>
     <form id="contactForm" class="grid sm:grid-cols-2 gap-4 text-left">
-      <input required name="name" type="text" placeholder="Your Name" class="sm:col-span-1 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 px-4 py-3.5 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-none transition">
-      <input required name="email" type="email" placeholder="Your Email" class="sm:col-span-1 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 px-4 py-3.5 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-none transition">
-      <textarea required name="message" rows="5" placeholder="Your Message" class="sm:col-span-2 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 px-4 py-3.5 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-none transition"></textarea>
-      <button type="submit" class="sm:col-span-2 bg-brand-600 hover:bg-brand-700 text-white font-semibold px-6 py-3.5 rounded-xl transition shadow-xl shadow-brand-600/30 hover:-translate-y-0.5">Send Message</button>
-      <p id="formNote" class="sm:col-span-2 text-center text-sm text-brand-600 dark:text-brand-400 hidden"></p>
+      <input required name="name" type="text" placeholder="Your Name" class="sm:col-span-1 rounded-xl bg-[#0d0d0d] border border-[#262626] text-white placeholder-neutral-600 px-4 py-3.5 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-none transition">
+      <input required name="email" type="email" placeholder="Your Email" class="sm:col-span-1 rounded-xl bg-[#0d0d0d] border border-[#262626] text-white placeholder-neutral-600 px-4 py-3.5 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-none transition">
+      <textarea required name="message" rows="5" placeholder="Your Message" class="sm:col-span-2 rounded-xl bg-[#0d0d0d] border border-[#262626] text-white placeholder-neutral-600 px-4 py-3.5 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-none transition"></textarea>
+      <button type="submit" class="sm:col-span-2 inline-flex items-center justify-center gap-2 bg-brand-500 hover:bg-brand-600 text-white font-semibold px-6 py-3.5 rounded-full transition shadow-xl shadow-brand-500/30 hover:-translate-y-0.5">Send Message
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </button>
+      <p id="formNote" class="sm:col-span-2 text-center text-sm text-brand-500 hidden"></p>
     </form>
   </div>
 </section>
 
 <!-- Footer -->
-<footer class="border-t border-slate-200 dark:border-slate-800 py-8 px-4 sm:px-6">
-  <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-500">
+<footer class="border-t border-[#161616] py-8 px-4 sm:px-6">
+  <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-neutral-600">
     <p>© <span id="year"></span> Rabin Mia. All rights reserved.</p>
     <p>Full-Stack Developer · <span class="grad-text font-semibold">Building anything with AI</span></p>
   </div>
 </footer>
 
+<!-- Floating WhatsApp -->
+<a href="https://wa.me/8801320325852" target="_blank" rel="noopener" class="fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-brand-500 hover:bg-brand-600 shadow-xl shadow-brand-500/40 flex items-center justify-center transition hover:scale-110" aria-label="Chat on WhatsApp">
+  <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413A11.815 11.815 0 0012.05 0zm5.995 17.098c-.253.71-1.47 1.356-2.03 1.413-.512.077-1.16.108-1.872-.118-.432-.136-.988-.32-1.698-.627-2.98-1.388-4.926-4.405-5.075-4.603-.148-.199-1.212-1.612-1.212-3.075 0-1.462.767-2.182 1.039-2.48.272-.297.594-.371.792-.371.199 0 .398.002.572.01.174.009.406-.066.638.495.235.579.802 2.043.872 2.19.074.15.124.323.025.52-.1.199-.174.323-.347.52-.174.198-.363.44-.521.586-.174.174-.355.364-.153.713.202.349.899 1.477 1.93 2.396 1.325 1.18 2.444 1.548 2.796 1.724.352.176.558.147.765-.092.202-.235.862-.998 1.093-1.341.231-.344.463-.287.779-.172.316.115 2.009.949 2.355 1.122.347.174.578.26.664.407.086.147.086.847-.167 1.666z"/></svg>
+</a>
+
 <script>
-// Dark mode
-const html=document.documentElement;
-const saved=localStorage.getItem('theme');
-if(saved==='dark'||(!saved&&matchMedia('(prefers-color-scheme: dark)').matches))html.classList.add('dark');
-document.getElementById('themeToggle').addEventListener('click',()=>{html.classList.toggle('dark');localStorage.setItem('theme',html.classList.contains('dark')?'dark':'light')});
 // Mobile menu
-const mm=document.getElementById('mobileMenu');
-document.getElementById('menuBtn').addEventListener('click',()=>mm.classList.toggle('hidden'));
-mm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mm.classList.add('hidden')));
-// Typing
-const roles=['Full-Stack Web Developer','Laravel + React + Vue','API Architect','AI-Powered Builder'];
-const tEl=document.getElementById('typing');let ri=0,ci=0,del=false;
-(function type(){const w=roles[ri];tEl.textContent=del?w.slice(0,--ci):w.slice(0,++ci);let d=del?45:90;
-if(!del&&ci===w.length){d=1800;del=true}else if(del&&ci===0){del=false;ri=(ri+1)%roles.length;d=400}
-setTimeout(type,d)})();
+var mm=document.getElementById('mobileMenu');
+document.getElementById('menuBtn').addEventListener('click',function(){mm.classList.toggle('hidden')});
+mm.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){mm.classList.add('hidden')})});
+// Stats counters
+var stats=[['3','+','Years Of Experience'],['40','+','Projects Completed'],['25','+','Happy Clients'],['12','+','Live Websites']];
+var sg=document.getElementById('statsGrid');
+stats.forEach(function(s){sg.insertAdjacentHTML('beforeend','<div class="text-center"><p class="text-4xl sm:text-5xl font-black text-white"><span class="counter" data-target="'+s[0]+'">0</span>'+s[1]+'</p><p class="text-xs sm:text-sm text-neutral-500 mt-1 font-medium">'+s[2]+'</p></div>')});
 // Skills
-const skills=[
+var skills=[
  ['PHP',95,'M4 7c0-1.66 3.58-3 8-3s8 1.34 8 3-3.58 3-8 3-8-1.34-8-3zM4 7v10c0 1.66 3.58 3 8 3s8-1.34 8-3V7'],
  ['Laravel',95,'M13 10V3L4 14h7v7l9-11h-7z'],
  ['JavaScript / TypeScript',90,'M16 18l6-6-6-6M8 6l-6 6 6 6'],
@@ -241,26 +263,20 @@ const skills=[
  ['MySQL',90,'M4 7c0-1.66 3.58-3 8-3s8 1.34 8 3-3.58 3-8 3-8-1.34-8-3zM4 7v10c0 1.66 3.58 3 8 3s8-1.34 8-3V7'],
  ['Git',85,'M6 2l-4 4 4 4M2 6h14a4 4 0 010 8h-2'],
  ['API Integration',88,'M4 12a8 8 0 018-8 8 8 0 018 8 8 8 0 01-8 8 8 8 0 01-8-8zm8-4v8m0 0l-3-3m3 3l3-3'],
- ['Docker',80,'M4 8c0-2 3-4 8-4s8 2 8 4-3 4-8 4-8-2-8-4zM4 8v8c0 2 3 4 8 4s8-2 8-4V8'],
+ ['Docker',80,'M4 8c0-2 3-4 8-4s8 2 8 4-3 4-8 4-8-2-8-4zM4 8v8c0 2 3 4 8 4s8-2 8-4V8']
 ];
-const sg=document.getElementById('skillsGrid');
-skills.forEach(s=>{sg.insertAdjacentHTML('beforeend',`
-<div class="card-hover rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5">
-  <div class="flex items-center justify-between mb-3">
-    <div class="flex items-center gap-3">
-      <div class="w-9 h-9 rounded-xl bg-brand-50 dark:bg-brand-500/10 text-brand-600 dark:text-brand-400 flex items-center justify-center">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="${s[2]}"/></svg>
-      </div>
-      <p class="font-semibold text-sm">${s[0]}</p>
-    </div>
-    <span class="text-xs font-bold text-brand-600 dark:text-brand-400">${s[1]}%</span>
-  </div>
-  <div class="h-2 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
-    <div class="skill-bar h-full rounded-full bg-gradient-to-r from-brand-500 to-cyan-500" data-level="${s[1]}" style="width:0"></div>
-  </div>
-</div>`)});
+var skg=document.getElementById('skillsGrid');
+skills.forEach(function(s){skg.insertAdjacentHTML('beforeend','<div class="card-hover rounded-2xl bg-[#0d0d0d] border border-[#1f1f1f] p-5">'+
+'<div class="flex items-center justify-between mb-3">'+
+'<div class="flex items-center gap-3">'+
+'<div class="w-9 h-9 rounded-xl bg-brand-500/10 text-brand-500 flex items-center justify-center">'+
+'<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="'+s[2]+'"/></svg></div>'+
+'<p class="font-semibold text-sm text-white">'+s[0]+'</p></div>'+
+'<span class="text-xs font-bold text-brand-500">'+s[1]+'%</span></div>'+
+'<div class="h-1.5 rounded-full bg-[#1f1f1f] overflow-hidden">'+
+'<div class="skill-bar h-full rounded-full bg-brand-500" data-level="'+s[1]+'" style="width:0"></div></div></div>')});
 // Projects
-const projects=[
+var projects=[
  {title:'As Above Funding',tag:'fintech',desc:'Funding platform for As Above Funding Group.',url:'https://app.asabovefunding.com/',shot:'assets/shots/asabovefunding.jpg'},
  {title:'BDTalika',tag:'web',desc:'Bangladeshi business listing platform.',url:'http://bdtalika.com/',shot:'assets/shots/bdtalika.jpg'},
  {title:'RTO Devices',tag:'ecommerce',desc:'Gadgets and electronics e-commerce store.',url:'https://rtodevices.com/',shot:'assets/shots/rtodevices.jpg'},
@@ -272,46 +288,49 @@ const projects=[
  {title:'MemoryClick',tag:'web',desc:'Photography and memories platform.',url:'https://memoryclick.com.bd/',shot:'assets/shots/memoryclick.jpg'},
  {title:'Moventra Drive',tag:'web',desc:'Vehicle and driving services platform.',url:'https://moventradrive.com/',shot:'assets/shots/moventra.jpg'},
  {title:'CastingBD',tag:'web',desc:'Talent casting and media platform.',url:'https://castingbd.com/',shot:'assets/shots/castingbd.jpg'},
- {title:'BlackBossBD',tag:'ecommerce',desc:'Premium fashion brand store.',url:'https://blackbossbd.com/',shot:'assets/shots/blackbossbd.jpg'},
+ {title:'BlackBossBD',tag:'ecommerce',desc:'Premium fashion brand store.',url:'https://blackbossbd.com/',shot:'assets/shots/blackbossbd.jpg'}
 ];
-const tags=[['all','All'],['web','Web Platforms'],['ecommerce','E-commerce'],['fintech','Fintech'],['education','Education']];
-const fb=document.getElementById('filterBtns'),pg=document.getElementById('projectsGrid');
-function render(f='all'){pg.innerHTML='';projects.filter(p=>f==='all'||p.tag===f).forEach(p=>{
-pg.insertAdjacentHTML('beforeend',`
-<a href="${p.url}" target="_blank" rel="noopener" class="proj-card tilt shine card-hover group rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden block">
-  <div class="h-48 overflow-hidden bg-slate-100 dark:bg-slate-800 relative">
-    <img src="${p.shot}" alt="${p.title} screenshot" loading="lazy" class="shot w-full h-full object-cover object-top">
-    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
-  </div>
-  <div class="p-5">
-    <div class="flex items-center justify-between mb-2">
-      <h3 class="font-bold">${p.title}</h3>
-      <svg class="w-4 h-4 text-slate-400 group-hover:text-brand-500 transition" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H8M17 7v9"/></svg>
-    </div>
-    <p class="text-sm text-slate-500 dark:text-slate-400 mb-3">${p.desc}</p>
-    <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-brand-50 dark:bg-brand-500/10 text-brand-600 dark:text-brand-400 capitalize">${p.tag}</span>
-  </div>
-</a>`)})}
-tags.forEach((t,i)=>{const b=document.createElement('button');b.textContent=t[1];
-b.className=i===0?'px-4 py-1.5 rounded-full text-sm font-semibold bg-brand-600 text-white':'px-4 py-1.5 rounded-full text-sm font-semibold border border-slate-300 dark:border-slate-700 hover:border-brand-500 hover:text-brand-500 transition';
-b.addEventListener('click',()=>{fb.querySelectorAll('button').forEach(x=>x.className='px-4 py-1.5 rounded-full text-sm font-semibold border border-slate-300 dark:border-slate-700 hover:border-brand-500 hover:text-brand-500 transition');b.className='px-4 py-1.5 rounded-full text-sm font-semibold bg-brand-600 text-white';render(t[0])});
-fb.appendChild(b)});
+var tags=[['all','All'],['web','Web Platforms'],['ecommerce','E-commerce'],['fintech','Fintech'],['education','Education']];
+var fb=document.getElementById('filterBtns'),pg=document.getElementById('projectsGrid');
+function render(f){
+ f=f||'all';pg.innerHTML='';
+ projects.filter(function(p){return f==='all'||p.tag===f}).forEach(function(p){
+  pg.insertAdjacentHTML('beforeend','<a href="'+p.url+'" target="_blank" rel="noopener" class="proj-card card-hover group rounded-2xl bg-[#0d0d0d] border border-[#1f1f1f] overflow-hidden block">'+
+  '<div class="h-48 overflow-hidden relative">'+
+  '<img src="'+p.shot+'" alt="'+p.title+'" loading="lazy" class="shot w-full h-full object-cover object-top">'+
+  '<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition"></div></div>'+
+  '<div class="p-5"><div class="flex items-center justify-between mb-2">'+
+  '<h3 class="font-bold text-white">'+p.title+'</h3>'+
+  '<svg class="w-4 h-4 text-neutral-600 group-hover:text-brand-500 transition" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H8M17 7v9"/></svg></div>'+
+  '<p class="text-sm text-neutral-500 mb-3">'+p.desc+'</p>'+
+  '<span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-brand-500/10 text-brand-500 capitalize">'+p.tag+'</span></div></a>')})}
+tags.forEach(function(t,i){
+ var b=document.createElement('button');b.textContent=t[1];
+ b.className=i===0?'px-4 py-1.5 rounded-full text-sm font-semibold bg-brand-500 text-white':'px-4 py-1.5 rounded-full text-sm font-semibold border border-[#262626] text-neutral-400 hover:border-brand-500 hover:text-brand-500 transition';
+ b.addEventListener('click',function(){
+  fb.querySelectorAll('button').forEach(function(x){x.className='px-4 py-1.5 rounded-full text-sm font-semibold border border-[#262626] text-neutral-400 hover:border-brand-500 hover:text-brand-500 transition'});
+  b.className='px-4 py-1.5 rounded-full text-sm font-semibold bg-brand-500 text-white';render(t[0])});
+ fb.appendChild(b)});
 render();
-// Reveal
-const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');e.target.querySelectorAll('.skill-bar').forEach(bar=>{bar.style.transition='width 1.2s ease-out .2s';bar.style.width=bar.dataset.level+'%'});io.unobserve(e.target)}})},{threshold:.15});document.querySelectorAll('.fade-up').forEach(el=>io.observe(el));
-// Contact
-document.getElementById('contactForm').addEventListener('submit',e=>{
-e.preventDefault();const f=e.target,note=document.getElementById('formNote');
-const body=encodeURIComponent(`Name: ${f.name.value}\n\n${f.message.value}`);
-location.href=`mailto:rabinmia795@gmail.com?subject=${encodeURIComponent('Portfolio Contact from '+f.name.value)}&body=${body}`;
-note.textContent='Opening your email app to send the message — thanks for reaching out!';note.classList.remove('hidden');f.reset()});
-function applyTilt(root){root.querySelectorAll('.tilt').forEach(card=>{if(card.dataset.tilt)return;card.dataset.tilt=1;let raf=null;
-card.addEventListener('mousemove',ev=>{const r=card.getBoundingClientRect();
-const px=(ev.clientX-r.left)/r.width,py=(ev.clientY-r.top)/r.height;
-card.style.setProperty('--mx',(px*100)+'%');card.style.setProperty('--my',(py*100)+'%');
-if(raf)cancelAnimationFrame(raf);raf=requestAnimationFrame(()=>{card.style.transform='perspective(900px) rotateX('+((.5-py)*8).toFixed(2)+'deg) rotateY('+((px-.5)*10).toFixed(2)+'deg) translateY(-4px)'})});
-card.addEventListener('mouseleave',()=>{if(raf)cancelAnimationFrame(raf);card.style.transform=''})})}
-applyTilt(document);
+// Reveal + bars + counters
+var io=new IntersectionObserver(function(es){es.forEach(function(e){
+ if(e.isIntersecting){
+  e.target.classList.add('visible');
+  e.target.querySelectorAll('.skill-bar').forEach(function(bar){bar.style.transition='width 1.2s ease-out .2s';bar.style.width=bar.dataset.level+'%'});
+  e.target.querySelectorAll('.counter').forEach(function(c){
+   if(c.dataset.done)return;c.dataset.done=1;
+   var target=parseInt(c.dataset.target,10),cur=0;
+   var iv=setInterval(function(){cur++;c.textContent=cur;if(cur>=target)clearInterval(iv)},60)});
+  io.unobserve(e.target)}})},{threshold:.15});
+document.querySelectorAll('.fade-up').forEach(function(el){io.observe(el)});
+// Contact form
+document.getElementById('contactForm').addEventListener('submit',function(e){
+ e.preventDefault();
+ var f=e.target,note=document.getElementById('formNote');
+ var body=encodeURIComponent('Name: '+f.name.value+'\n\n'+f.message.value);
+ location.href='mailto:rabinmia795@gmail.com?subject='+encodeURIComponent('Portfolio Contact from '+f.name.value)+'&body='+body;
+ note.textContent='Opening your email app to send the message — thanks for reaching out!';
+ note.classList.remove('hidden');f.reset()});
 document.getElementById('year').textContent=new Date().getFullYear();
 </script>
 </body>
