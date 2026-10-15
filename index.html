@@ -13,8 +13,6 @@
 <style>
   body{font-family:'Poppins',-apple-system,'Segoe UI',Roboto,sans-serif}
   .ghost{color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.08)}
-  .fade-up{opacity:0;transform:translateY(26px);transition:all .8s cubic-bezier(.16,1,.3,1)}
-  .fade-up.visible{opacity:1;transform:translateY(0)}
   .card-hover{transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s ease,border-color .35s ease}
   .card-hover:hover{transform:translateY(-6px);border-color:rgba(255,77,77,.5);box-shadow:0 24px 48px -16px rgba(255,77,77,.15)}
   .grad-text{color:#ff4d4d}
@@ -76,7 +74,7 @@
   <div class="blob blob-2 w-[420px] h-[420px] bg-brand-500 top-24 -right-32"></div>
   <div class="max-w-7xl mx-auto relative grid lg:grid-cols-12 gap-10 items-center">
     <!-- Left: name -->
-    <div class="lg:col-span-4 text-center lg:text-left">
+    <div class="hero-col lg:col-span-4 text-center lg:text-left">
       <p class="text-sm font-semibold tracking-[0.35em] text-neutral-500 mb-3">HELLO I'M</p>
       <h1 class="text-5xl sm:text-6xl xl:text-7xl font-black text-white tracking-tight leading-[1.05] mb-4">Rabin<br>Mia<span class="text-brand-500">.</span></h1>
       <p class="text-lg font-semibold text-neutral-200 mb-3">Full-Stack Web Developer</p>
@@ -88,7 +86,7 @@
       </div>
     </div>
     <!-- Center: portrait -->
-    <div class="lg:col-span-4 relative flex justify-center">
+    <div class="hero-col lg:col-span-4 relative flex justify-center">
       <p class="ghost absolute -top-8 lg:-top-16 left-1/2 -translate-x-1/2 text-7xl sm:text-8xl font-black whitespace-nowrap pointer-events-none select-none">PORTFOLIO</p>
       <div class="relative mt-6 lg:mt-14">
         <div class="absolute -inset-4 bg-brand-500/20 blur-3xl rounded-[2.5rem]"></div>
@@ -100,7 +98,7 @@
       </div>
     </div>
     <!-- Right: about quick -->
-    <div class="lg:col-span-4 space-y-7">
+    <div class="hero-col lg:col-span-4 space-y-7">
       <div>
         <h2 class="text-xl font-bold text-white mb-3">About Me</h2>
         <p class="text-sm text-neutral-500 leading-relaxed">I'm a full-stack web developer from Bangladesh, building scalable, high-performance web applications from concept to deployment. Core stack: Laravel, PHP, MySQL, JavaScript, TypeScript, React, Vue.js and Tailwind CSS.</p>
@@ -239,6 +237,8 @@
   <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413A11.815 11.815 0 0012.05 0zm5.995 17.098c-.253.71-1.47 1.356-2.03 1.413-.512.077-1.16.108-1.872-.118-.432-.136-.988-.32-1.698-.627-2.98-1.388-4.926-4.405-5.075-4.603-.148-.199-1.212-1.612-1.212-3.075 0-1.462.767-2.182 1.039-2.48.272-.297.594-.371.792-.371.199 0 .398.002.572.01.174.009.406-.066.638.495.235.579.802 2.043.872 2.19.074.15.124.323.025.52-.1.199-.174.323-.347.52-.174.198-.363.44-.521.586-.174.174-.355.364-.153.713.202.349.899 1.477 1.93 2.396 1.325 1.18 2.444 1.548 2.796 1.724.352.176.558.147.765-.092.202-.235.862-.998 1.093-1.341.231-.344.463-.287.779-.172.316.115 2.009.949 2.355 1.122.347.174.578.26.664.407.086.147.086.847-.167 1.666z"/></svg>
 </a>
 
+<script src="assets/gsap.min.js"></script>
+<script src="assets/ScrollTrigger.min.js"></script>
 <script>
 // Mobile menu
 var mm=document.getElementById('mobileMenu');
@@ -310,17 +310,40 @@ tags.forEach(function(t,i){
   b.className='px-4 py-1.5 rounded-full text-sm font-semibold bg-brand-500 text-white';render(t[0])});
  fb.appendChild(b)});
 render();
-// Reveal + bars + counters
-var io=new IntersectionObserver(function(es){es.forEach(function(e){
- if(e.isIntersecting){
-  e.target.classList.add('visible');
-  e.target.querySelectorAll('.skill-bar').forEach(function(bar){bar.style.transition='width 1.2s ease-out .2s';bar.style.width=bar.dataset.level+'%'});
-  e.target.querySelectorAll('.counter').forEach(function(c){
-   if(c.dataset.done)return;c.dataset.done=1;
-   var target=parseInt(c.dataset.target,10),cur=0;
-   var iv=setInterval(function(){cur++;c.textContent=cur;if(cur>=target)clearInterval(iv)},60)});
-  io.unobserve(e.target)}})},{threshold:.15});
-document.querySelectorAll('.fade-up').forEach(function(el){io.observe(el)});
+// GSAP animations
+if(window.gsap&&window.ScrollTrigger){
+ gsap.registerPlugin(ScrollTrigger);
+ // hero entrance
+ gsap.from('.hero-col',{y:60,opacity:0,duration:1,stagger:.18,ease:'power3.out'});
+ // section reveals
+ gsap.utils.toArray('.fade-up').forEach(function(el){
+  gsap.from(el,{y:45,opacity:0,duration:.9,ease:'power3.out',
+   scrollTrigger:{trigger:el,start:'top 85%',once:true}})});
+ // staggered card grids
+ gsap.from('#statsGrid > *',{y:35,opacity:0,duration:.7,stagger:.12,ease:'power3.out',
+  scrollTrigger:{trigger:'#statsGrid',start:'top 90%',once:true}});
+ gsap.from('#skillsGrid > *',{y:45,opacity:0,duration:.7,stagger:.07,ease:'power3.out',
+  scrollTrigger:{trigger:'#skillsGrid',start:'top 85%',once:true}});
+ gsap.from('#projectsGrid > *',{y:45,opacity:0,duration:.7,stagger:.06,ease:'power3.out',
+  scrollTrigger:{trigger:'#projectsGrid',start:'top 85%',once:true}});
+ // skill bars
+ gsap.utils.toArray('.skill-bar').forEach(function(bar){
+  gsap.to(bar,{width:bar.dataset.level+'%',duration:1.3,ease:'power2.out',
+   scrollTrigger:{trigger:bar,start:'top 92%',once:true}})});
+ // counters
+ gsap.utils.toArray('.counter').forEach(function(c){
+  var t=parseInt(c.dataset.target,10);
+  ScrollTrigger.create({trigger:c,start:'top 92%',once:true,
+   onEnter:function(){var o={v:0};
+    gsap.to(o,{v:t,duration:1.6,ease:'power1.out',
+     onUpdate:function(){c.textContent=Math.round(o.v)}})}});
+ });
+ // ghost text parallax
+ gsap.to('.ghost',{y:-110,ease:'none',
+  scrollTrigger:{trigger:'#home',start:'top top',end:'bottom top',scrub:true}});
+ // floating badges gentle motion
+ gsap.to('.float-anim',{y:-10,duration:2.4,ease:'sine.inOut',yoyo:true,repeat:-1,stagger:.5});
+}
 // Contact form
 document.getElementById('contactForm').addEventListener('submit',function(e){
  e.preventDefault();
