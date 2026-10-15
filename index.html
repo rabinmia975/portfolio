@@ -1,329 +1,343 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rabin Mia — Full-Stack Web Developer</title>
-<meta name="description" content="Rabin Mia — Full-stack web developer from Dhaka, Bangladesh. Laravel, PHP, JavaScript, Tailwind CSS.">
+<meta name="description" content="Rabin Mia — Full-stack web developer from Dhaka, Bangladesh. Laravel, PHP, JavaScript, MySQL.">
 <link rel="icon" href="https://avatars.githubusercontent.com/u/161142497?v=4">
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-tailwind.config = {
-  darkMode: 'class',
-  theme: {
-    extend: {
-      colors: {
-        brand: { 50:'#eef5ff',100:'#d9e8ff',200:'#bcd6ff',300:'#8ebcff',400:'#5996ff',500:'#3370ff',600:'#1b4df5',700:'#143ce1',800:'#1433b6',900:'#16308d',950:'#111f57' },
-      },
-      fontFamily: { sans: ['Inter','ui-sans-serif','system-ui'] },
-    }
-  }
-}
-</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  .typing::after { content:'|'; animation: blink 1s step-end infinite; }
-  @keyframes blink { 50% { opacity: 0; } }
-  .fade-up { opacity: 0; transform: translateY(24px); transition: all .7s ease-out; }
-  .fade-up.visible { opacity: 1; transform: translateY(0); }
-  .card-hover { transition: transform .25s ease, box-shadow .25s ease; }
-  .card-hover:hover { transform: translateY(-6px); box-shadow: 0 20px 40px -12px rgba(0,0,0,.18); }
-  ::-webkit-scrollbar { width: 10px; }
-  ::-webkit-scrollbar-track { background: transparent; }
-  ::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 8px; }
-  .dark ::-webkit-scrollbar-thumb { background: #475569; }
+:root{
+  --bg:#f8fafc; --surface:#ffffff; --surface2:#f1f5f9;
+  --text:#1e293b; --muted:#64748b; --border:#e2e8f0;
+  --brand:#1b4df5; --brand-soft:#eef5ff; --on-brand:#ffffff;
+  --shadow:0 10px 30px -10px rgba(15,23,42,.15);
+}
+[data-theme="dark"]{
+  --bg:#020617; --surface:#0f172a; --surface2:#1e293b;
+  --text:#e2e8f0; --muted:#94a3b8; --border:#334155;
+  --brand:#5996ff; --brand-soft:rgba(51,112,255,.12); --on-brand:#ffffff;
+  --shadow:0 10px 30px -10px rgba(0,0,0,.5);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;transition:background .3s,color .3s}
+a{color:inherit;text-decoration:none}
+img{display:block}
+.container{max-width:1120px;margin:0 auto;padding:0 20px}
+
+/* Navbar */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;backdrop-filter:blur(10px);background:color-mix(in srgb,var(--surface) 78%,transparent);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1120px;margin:0 auto;padding:0 20px;height:64px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-weight:800;font-size:20px;letter-spacing:-.5px}
+.logo span{color:var(--brand)}
+.nav-links{display:flex;gap:32px;font-size:14px;font-weight:500}
+.nav-links a:hover{color:var(--brand)}
+.nav-actions{display:flex;align-items:center;gap:12px}
+.icon-btn{background:none;border:none;cursor:pointer;color:var(--text);padding:8px;border-radius:8px;display:flex;transition:background .2s}
+.icon-btn:hover{background:var(--surface2)}
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14px;padding:10px 18px;border-radius:10px;border:none;cursor:pointer;transition:all .2s}
+.btn-primary{background:var(--brand);color:var(--on-brand);box-shadow:0 8px 20px -6px color-mix(in srgb,var(--brand) 45%,transparent)}
+.btn-primary:hover{filter:brightness(.92)}
+.btn-outline{background:transparent;color:var(--text);border:1px solid var(--border)}
+.btn-outline:hover{border-color:var(--brand);color:var(--brand)}
+.sun,.moon{width:20px;height:20px}
+[data-theme="light"] .moon{display:none}
+[data-theme="dark"] .sun{display:none}
+#menuBtn{display:none}
+#mobileMenu{display:none;border-top:1px solid var(--border);padding:16px 20px;flex-direction:column;gap:12px;font-size:14px;font-weight:500;background:var(--surface)}
+#mobileMenu.open{display:flex}
+
+/* Hero */
+header{padding:130px 0 80px}
+.hero{display:flex;align-items:center;gap:48px;flex-wrap:wrap}
+.hero-text{flex:1;min-width:280px;text-align:center}
+.hero-img{flex-shrink:0;position:relative;margin:0 auto}
+.avatar-wrap{position:relative;width:260px;height:260px}
+@media(min-width:640px){.avatar-wrap{width:290px;height:290px}}
+.avatar-glow{position:absolute;inset:-8px;background:linear-gradient(135deg,var(--brand),#a855f7);border-radius:50%;filter:blur(36px);opacity:.35}
+.avatar{position:relative;width:100%;height:100%;border-radius:50%;object-fit:cover;border:4px solid var(--surface);box-shadow:var(--shadow)}
+.hello{color:var(--brand);font-weight:600;margin-bottom:10px}
+h1{font-size:clamp(36px,7vw,60px);font-weight:800;letter-spacing:-1.5px;margin-bottom:12px}
+.typing-line{font-size:clamp(18px,3vw,24px);font-weight:600;color:var(--muted);height:32px;margin-bottom:20px}
+#typing{color:var(--brand)}
+#typing::after{content:'|';animation:blink 1s step-end infinite}
+@keyframes blink{50%{opacity:0}}
+.hero-desc{color:var(--muted);max-width:520px;margin:0 auto 30px;font-size:16px}
+.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.hero-btns .btn{padding:13px 26px;font-size:15px}
+.socials{display:flex;gap:12px;justify-content:center;margin-top:30px}
+.soc{padding:10px;border:1px solid var(--border);border-radius:10px;display:flex;transition:all .2s}
+.soc:hover{border-color:var(--brand);color:var(--brand);transform:translateY(-2px)}
+.soc svg{width:20px;height:20px}
+
+/* Sections */
+section{padding:80px 0}
+.alt{background:var(--surface)}
+[data-theme="dark"] .alt{background:rgba(15,23,42,.5)}
+.sec-title{font-size:30px;font-weight:800;margin-bottom:10px;letter-spacing:-.5px}
+.sec-title span{color:var(--brand)}
+.sec-bar{width:64px;height:4px;background:var(--brand);border-radius:4px;margin-bottom:40px}
+
+/* About */
+.about-grid{display:grid;grid-template-columns:2fr 1fr;gap:36px}
+@media(max-width:768px){.about-grid{grid-template-columns:1fr}}
+.about-grid p{color:var(--muted);margin-bottom:14px}
+.about-grid strong{color:var(--text)}
+.info-card{border:1px solid var(--border);border-radius:14px;padding:18px 20px;margin-bottom:14px;background:var(--surface)}
+.alt .info-card{background:var(--bg)}
+[data-theme="dark"] .alt .info-card{background:rgba(2,6,23,.4)}
+.info-card .label{font-size:13px;color:var(--muted)}
+.info-card .value{font-weight:600}
+
+/* Skills */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:20px}
+.skill-card{border:1px solid var(--border);border-radius:14px;padding:20px;background:var(--surface);transition:transform .25s,box-shadow .25s}
+.skill-card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.skill-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.skill-name{display:flex;align-items:center;gap:10px;font-weight:600;font-size:14px}
+.skill-ico{width:36px;height:36px;border-radius:10px;background:var(--brand-soft);color:var(--brand);display:flex;align-items:center;justify-content:center}
+.skill-ico svg{width:18px;height:18px}
+.skill-pct{font-size:12px;font-weight:700;color:var(--brand)}
+.bar{height:8px;border-radius:99px;background:var(--surface2);overflow:hidden}
+.bar-fill{height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--brand),#a855f7);transition:width 1.2s ease-out .2s}
+
+/* Projects */
+.proj-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:40px}
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.chip{padding:7px 16px;border-radius:99px;font-size:13px;font-weight:600;border:1px solid var(--border);background:transparent;color:var(--text);cursor:pointer;transition:all .2s}
+.chip:hover{border-color:var(--brand);color:var(--brand)}
+.chip.active{background:var(--brand);color:var(--on-brand);border-color:var(--brand)}
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
+.proj-card{border:1px solid var(--border);border-radius:14px;overflow:hidden;background:var(--surface);transition:transform .25s,box-shadow .25s;display:block}
+.proj-card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.proj-cover{height:140px;display:flex;align-items:center;justify-content:center}
+.proj-cover span{font-size:36px;font-weight:800;color:rgba(255,255,255,.9);letter-spacing:-1px;transition:transform .3s}
+.proj-card:hover .proj-cover span{transform:scale(1.15)}
+.proj-body{padding:20px}
+.proj-title-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.proj-title-row h3{font-size:17px}
+.proj-arrow{width:16px;height:16px;color:var(--muted);transition:color .2s}
+.proj-card:hover .proj-arrow{color:var(--brand)}
+.proj-desc{font-size:14px;color:var(--muted);margin-bottom:16px}
+.tags{display:flex;gap:8px;flex-wrap:wrap}
+.tag{font-size:12px;font-weight:500;padding:4px 10px;border-radius:99px;background:var(--surface2);color:var(--muted)}
+
+/* Contact */
+.contact-wrap{max-width:680px;margin:0 auto;text-align:center}
+.contact-desc{color:var(--muted);margin:0 auto 36px;max-width:480px}
+form{display:grid;grid-template-columns:1fr 1fr;gap:14px;text-align:left}
+@media(max-width:540px){form{grid-template-columns:1fr}}
+input,textarea{width:100%;padding:13px 16px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:15px;font-family:inherit;outline:none;transition:border .2s,box-shadow .2s}
+input:focus,textarea:focus{border-color:var(--brand);box-shadow:0 0 0 3px color-mix(in srgb,var(--brand) 18%,transparent)}
+textarea{grid-column:1/-1;resize:vertical;min-height:120px}
+.full{grid-column:1/-1}
+#formNote{grid-column:1/-1;text-align:center;font-size:14px;color:var(--brand);display:none}
+
+/* Footer */
+footer{border-top:1px solid var(--border);padding:30px 0}
+.foot-inner{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;font-size:14px;color:var(--muted)}
+.foot-inner .hl{color:var(--brand);font-weight:600}
+
+/* Reveal */
+.fade-up{opacity:0;transform:translateY(24px);transition:all .7s ease-out}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){.fade-up{opacity:1;transform:none;transition:none}}
+
+/* Mobile nav */
+@media(max-width:768px){
+  .nav-links{display:none}
+  #menuBtn{display:flex}
+}
 </style>
 </head>
-<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-200 font-sans antialiased transition-colors">
+<body>
 
-<!-- Navbar -->
-<nav class="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-white/70 dark:bg-slate-950/70 border-b border-slate-200/60 dark:border-slate-800/60">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-    <a href="#home" class="font-extrabold text-xl tracking-tight">rabin<span class="text-brand-500">.dev</span></a>
-    <div class="hidden md:flex items-center gap-8 text-sm font-medium">
-      <a href="#about" class="hover:text-brand-500 transition">About</a>
-      <a href="#skills" class="hover:text-brand-500 transition">Skills</a>
-      <a href="#projects" class="hover:text-brand-500 transition">Projects</a>
-      <a href="#contact" class="hover:text-brand-500 transition">Contact</a>
+<nav>
+  <div class="nav-inner">
+    <a href="#home" class="logo">rabin<span>.dev</span></a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
     </div>
-    <div class="flex items-center gap-3">
-      <button id="themeToggle" aria-label="Toggle dark mode" class="p-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 transition">
-        <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
-        <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+    <div class="nav-actions">
+      <button id="themeToggle" class="icon-btn" aria-label="Toggle dark mode">
+        <svg class="moon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+        <svg class="sun" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
       </button>
-      <a href="#contact" class="hidden sm:inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold px-4 py-2 rounded-lg transition">
-        Hire Me
-      </a>
-      <button id="menuBtn" aria-label="Menu" class="md:hidden p-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      <a href="#contact" class="btn btn-primary hire">Hire Me</a>
+      <button id="menuBtn" class="icon-btn" aria-label="Menu">
+        <svg class="sun" style="width:20px;height:20px" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
       </button>
     </div>
   </div>
-  <div id="mobileMenu" class="hidden md:hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-4 py-4 flex-col gap-4 text-sm font-medium">
-    <a href="#about" class="block py-1">About</a>
-    <a href="#skills" class="block py-1">Skills</a>
-    <a href="#projects" class="block py-1">Projects</a>
-    <a href="#contact" class="block py-1">Contact</a>
+  <div id="mobileMenu">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
   </div>
 </nav>
 
-<!-- Hero -->
-<header id="home" class="pt-32 pb-20 px-4 sm:px-6">
-  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
-    <div class="flex-1 text-center md:text-left">
-      <p class="text-brand-600 dark:text-brand-400 font-semibold mb-3">Hello, I'm</p>
-      <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight mb-4">Rabin Mia</h1>
-      <h2 class="text-xl sm:text-2xl font-semibold text-slate-600 dark:text-slate-400 mb-6 h-8">
-        <span id="typing" class="typing text-brand-500"></span>
-      </h2>
-      <p class="text-slate-600 dark:text-slate-400 max-w-xl mx-auto md:mx-0 mb-8 leading-relaxed">
-        A full-stack web developer from Dhaka, Bangladesh. I love tackling coding challenges and sharing innovative techniques for solving new code problems.
-      </p>
-      <div class="flex flex-wrap gap-4 justify-center md:justify-start">
-        <a href="#projects" class="bg-brand-600 hover:bg-brand-700 text-white font-semibold px-6 py-3 rounded-lg transition shadow-lg shadow-brand-600/25">View My Work</a>
-        <a href="#contact" class="border border-slate-300 dark:border-slate-700 hover:border-brand-500 hover:text-brand-500 font-semibold px-6 py-3 rounded-lg transition">Get In Touch</a>
+<header id="home">
+  <div class="container hero">
+    <div class="hero-text">
+      <p class="hello">Hello, I'm</p>
+      <h1>Rabin Mia</h1>
+      <p class="typing-line"><span id="typing"></span></p>
+      <p class="hero-desc">A full-stack web developer from Dhaka, Bangladesh. I love tackling coding challenges and sharing innovative techniques for solving new code problems.</p>
+      <div class="hero-btns">
+        <a href="#projects" class="btn btn-primary">View My Work</a>
+        <a href="#contact" class="btn btn-outline">Get In Touch</a>
       </div>
-      <div class="flex gap-3 justify-center md:justify-start mt-8">
-        <a href="https://github.com/rabinmia975" target="_blank" rel="noopener" class="p-2.5 rounded-lg border border-slate-300 dark:border-slate-700 hover:border-brand-500 hover:text-brand-500 transition" aria-label="GitHub">
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-1.97c-3.2.7-3.87-1.54-3.87-1.54-.53-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 015.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.66.41.36.78 1.06.78 2.14v3.17c0 .31.21.68.8.56A10.52 10.52 0 0023.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
-        </a>
-        <a href="mailto:shohag@asabovefunding.com" class="p-2.5 rounded-lg border border-slate-300 dark:border-slate-700 hover:border-brand-500 hover:text-brand-500 transition" aria-label="Email">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-        </a>
-        <a href="https://www.google.com/maps/search/?api=1&query=Banani,+Dhaka,+Bangladesh" target="_blank" rel="noopener" class="p-2.5 rounded-lg border border-slate-300 dark:border-slate-700 hover:border-brand-500 hover:text-brand-500 transition" aria-label="Location">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-        </a>
+      <div class="socials">
+        <a href="https://github.com/rabinmia975" target="_blank" rel="noopener" class="soc" aria-label="GitHub"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-1.97c-3.2.7-3.87-1.54-3.87-1.54-.53-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 015.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.66.41.36.78 1.06.78 2.14v3.17c0 .31.21.68.8.56A10.52 10.52 0 0023.5 12C23.5 5.65 18.35.5 12 .5z"/></svg></a>
+        <a href="mailto:shohag@asabovefunding.com" class="soc" aria-label="Email"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Banani,+Dhaka" target="_blank" rel="noopener" class="soc" aria-label="Location"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg></a>
       </div>
     </div>
-    <div class="flex-shrink-0 relative">
-      <div class="absolute inset-0 bg-gradient-to-tr from-brand-500 to-purple-500 rounded-full blur-2xl opacity-30 scale-110"></div>
-      <img src="https://avatars.githubusercontent.com/u/161142497?v=4" alt="Rabin Mia" class="relative w-56 h-56 sm:w-72 sm:h-72 rounded-full object-cover ring-4 ring-white dark:ring-slate-800 shadow-2xl">
+    <div class="hero-img">
+      <div class="avatar-wrap">
+        <div class="avatar-glow"></div>
+        <img src="https://avatars.githubusercontent.com/u/161142497?v=4" alt="Rabin Mia" class="avatar">
+      </div>
     </div>
   </div>
 </header>
 
-<!-- About -->
-<section id="about" class="py-20 px-4 sm:px-6 bg-white dark:bg-slate-900/50">
-  <div class="max-w-6xl mx-auto">
+<section id="about" class="alt">
+  <div class="container">
     <div class="fade-up">
-      <h2 class="text-3xl font-extrabold mb-3">About <span class="text-brand-500">Me</span></h2>
-      <div class="h-1 w-16 bg-brand-500 rounded mb-10"></div>
+      <h2 class="sec-title">About <span>Me</span></h2>
+      <div class="sec-bar"></div>
     </div>
-    <div class="grid md:grid-cols-3 gap-8 fade-up">
-      <div class="md:col-span-2 space-y-4 text-slate-600 dark:text-slate-400 leading-relaxed">
+    <div class="about-grid fade-up">
+      <div>
         <p>I'm a full-stack web developer based in Banani, Dhaka. I build complete web platforms end to end — from database design and backend architecture to modern, responsive frontends.</p>
-        <p>My core stack is <strong class="text-slate-800 dark:text-slate-200">Laravel + PHP + MySQL</strong>, paired with Tailwind CSS and JavaScript on the frontend. I enjoy constantly tackling coding challenges and sharing innovative techniques or strategies for solving new code problems.</p>
+        <p>My core stack is <strong>Laravel + PHP + MySQL</strong>, paired with clean HTML, CSS and JavaScript on the frontend. I enjoy constantly tackling coding challenges and sharing innovative techniques or strategies for solving new code problems.</p>
         <p>From blood-donation platforms to e-commerce systems and booking sites, I focus on clean, practical software that solves real problems.</p>
       </div>
-      <div class="space-y-4">
-        <div class="rounded-xl border border-slate-200 dark:border-slate-800 p-5">
-          <p class="text-sm text-slate-500 dark:text-slate-500">Based in</p>
-          <p class="font-semibold">Banani, Dhaka, Bangladesh</p>
-        </div>
-        <div class="rounded-xl border border-slate-200 dark:border-slate-800 p-5">
-          <p class="text-sm text-slate-500 dark:text-slate-500">Focus</p>
-          <p class="font-semibold">Full-Stack Web Development</p>
-        </div>
-        <div class="rounded-xl border border-slate-200 dark:border-slate-800 p-5">
-          <p class="text-sm text-slate-500 dark:text-slate-500">Email</p>
-          <p class="font-semibold break-all">shohag@asabovefunding.com</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Skills -->
-<section id="skills" class="py-20 px-4 sm:px-6">
-  <div class="max-w-6xl mx-auto">
-    <div class="fade-up">
-      <h2 class="text-3xl font-extrabold mb-3">My <span class="text-brand-500">Skills</span></h2>
-      <div class="h-1 w-16 bg-brand-500 rounded mb-10"></div>
-    </div>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 fade-up" id="skillsGrid"></div>
-  </div>
-</section>
-
-<!-- Projects -->
-<section id="projects" class="py-20 px-4 sm:px-6 bg-white dark:bg-slate-900/50">
-  <div class="max-w-6xl mx-auto">
-    <div class="fade-up flex flex-wrap items-end justify-between gap-4 mb-10">
       <div>
-        <h2 class="text-3xl font-extrabold mb-3">Featured <span class="text-brand-500">Projects</span></h2>
-        <div class="h-1 w-16 bg-brand-500 rounded"></div>
+        <div class="info-card"><p class="label">Based in</p><p class="value">Banani, Dhaka, Bangladesh</p></div>
+        <div class="info-card"><p class="label">Focus</p><p class="value">Full-Stack Web Development</p></div>
+        <div class="info-card"><p class="label">Email</p><p class="value">shohag@asabovefunding.com</p></div>
       </div>
-      <div class="flex flex-wrap gap-2" id="filterBtns"></div>
     </div>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" id="projectsGrid"></div>
   </div>
 </section>
 
-<!-- Contact -->
-<section id="contact" class="py-20 px-4 sm:px-6">
-  <div class="max-w-3xl mx-auto text-center fade-up">
-    <h2 class="text-3xl font-extrabold mb-3">Get In <span class="text-brand-500">Touch</span></h2>
-    <div class="h-1 w-16 bg-brand-500 rounded mb-8 mx-auto"></div>
-    <p class="text-slate-600 dark:text-slate-400 mb-10 max-w-xl mx-auto">Have a project in mind or want to collaborate? Send me a message — I usually reply within a day.</p>
-    <form id="contactForm" class="grid sm:grid-cols-2 gap-4 text-left">
-      <input required name="name" type="text" placeholder="Your Name" class="sm:col-span-1 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 px-4 py-3 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-none transition">
-      <input required name="email" type="email" placeholder="Your Email" class="sm:col-span-1 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 px-4 py-3 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-none transition">
-      <textarea required name="message" rows="5" placeholder="Your Message" class="sm:col-span-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 px-4 py-3 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-none transition"></textarea>
-      <button type="submit" class="sm:col-span-2 bg-brand-600 hover:bg-brand-700 text-white font-semibold px-6 py-3 rounded-lg transition shadow-lg shadow-brand-600/25">Send Message</button>
-      <p id="formNote" class="sm:col-span-2 text-center text-sm text-brand-600 dark:text-brand-400 hidden"></p>
+<section id="skills">
+  <div class="container">
+    <div class="fade-up">
+      <h2 class="sec-title">My <span>Skills</span></h2>
+      <div class="sec-bar"></div>
+    </div>
+    <div class="skills-grid fade-up" id="skillsGrid"></div>
+  </div>
+</section>
+
+<section id="projects" class="alt">
+  <div class="container">
+    <div class="proj-head fade-up">
+      <div>
+        <h2 class="sec-title">Featured <span>Projects</span></h2>
+        <div class="sec-bar"></div>
+      </div>
+      <div class="filters" id="filterBtns"></div>
+    </div>
+    <div class="projects-grid" id="projectsGrid"></div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container contact-wrap fade-up">
+    <h2 class="sec-title">Get In <span>Touch</span></h2>
+    <div class="sec-bar" style="margin:0 auto 32px"></div>
+    <p class="contact-desc">Have a project in mind or want to collaborate? Send me a message — I usually reply within a day.</p>
+    <form id="contactForm">
+      <input required name="name" type="text" placeholder="Your Name">
+      <input required name="email" type="email" placeholder="Your Email">
+      <textarea required name="message" placeholder="Your Message"></textarea>
+      <button type="submit" class="btn btn-primary full">Send Message</button>
+      <p id="formNote"></p>
     </form>
   </div>
 </section>
 
-<!-- Footer -->
-<footer class="border-t border-slate-200 dark:border-slate-800 py-8 px-4 sm:px-6">
-  <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-500 dark:text-slate-500">
+<footer>
+  <div class="container foot-inner">
     <p>© <span id="year"></span> Rabin Mia. All rights reserved.</p>
-    <p>Built with <span class="text-brand-500 font-semibold">Tailwind CSS</span> · Dhaka, Bangladesh</p>
+    <p>Built with <span class="hl">pure HTML &amp; CSS</span> · Dhaka, Bangladesh</p>
   </div>
 </footer>
 
 <script>
-// ---------- Dark mode ----------
-const html = document.documentElement;
-const saved = localStorage.getItem('theme');
-if (saved === 'dark' || (!saved && matchMedia('(prefers-color-scheme: dark)').matches)) html.classList.add('dark');
-document.getElementById('themeToggle').addEventListener('click', () => {
-  html.classList.toggle('dark');
-  localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+// Dark mode
+const root=document.documentElement;
+const saved=localStorage.getItem('theme');
+if(saved==='dark'||(!saved&&matchMedia('(prefers-color-scheme: dark)').matches))root.dataset.theme='dark';
+document.getElementById('themeToggle').addEventListener('click',()=>{
+  root.dataset.theme=root.dataset.theme==='dark'?'light':'dark';
+  localStorage.setItem('theme',root.dataset.theme);
 });
-
-// ---------- Mobile menu ----------
-document.getElementById('menuBtn').addEventListener('click', () => {
-  const m = document.getElementById('mobileMenu');
-  m.classList.toggle('hidden'); m.classList.toggle('flex');
-});
-document.querySelectorAll('#mobileMenu a').forEach(a => a.addEventListener('click', () => {
-  const m = document.getElementById('mobileMenu');
-  m.classList.add('hidden'); m.classList.remove('flex');
-}));
-
-// ---------- Typing effect ----------
-const roles = ['Full-Stack Web Developer', 'Laravel Artisan', 'PHP & MySQL Expert', 'UI Builder with Tailwind CSS'];
-const typingEl = document.getElementById('typing');
-let ri = 0, ci = 0, deleting = false;
-(function type() {
-  const word = roles[ri];
-  typingEl.textContent = deleting ? word.slice(0, --ci) : word.slice(0, ++ci);
-  let delay = deleting ? 45 : 90;
-  if (!deleting && ci === word.length) { delay = 1800; deleting = true; }
-  else if (deleting && ci === 0) { deleting = false; ri = (ri + 1) % roles.length; delay = 400; }
-  setTimeout(type, delay);
-})();
-
-// ---------- Skills ----------
-const skills = [
-  { name: 'PHP / Laravel', level: 95, icon: 'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5' },
-  { name: 'MySQL', level: 90, icon: 'M4 7c0-1.66 3.58-3 8-3s8 1.34 8 3-3.58 3-8 3-8-1.34-8-3zM4 7v10c0 1.66 3.58 3 8 3s8-1.34 8-3V7' },
-  { name: 'JavaScript', level: 85, icon: 'M16 18l6-6-6-6M8 6l-6 6 6 6' },
-  { name: 'Tailwind CSS', level: 90, icon: 'M13 10V3L4 14h7v7l9-11h-7z' },
-  { name: 'HTML5 / CSS3', level: 95, icon: 'M4 5l1.5 12L12 20l6.5-3L20 5H4zm3 4h10l-.5 4H8.5L8 16l-1-7z' },
-  { name: 'Blade Templates', level: 90, icon: 'M6 3v18M18 3v18M6 8h12M6 16h12' },
-  { name: 'Git / GitHub', level: 85, icon: 'M6 2l-4 4 4 4M2 6h14a4 4 0 010 8h-2' },
-  { name: 'API Integration', level: 80, icon: 'M4 12a8 8 0 018-8 8 8 0 018 8 8 8 0 01-8 8 8 8 0 01-8-8zm8-4v8m0 0l-3-3m3 3l3-3' },
+// Mobile menu
+const mm=document.getElementById('mobileMenu');
+document.getElementById('menuBtn').addEventListener('click',()=>mm.classList.toggle('open'));
+mm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mm.classList.remove('open')));
+// Typing
+const roles=['Full-Stack Web Developer','Laravel Artisan','PHP & MySQL Expert','Clean UI Builder'];
+const tEl=document.getElementById('typing');let ri=0,ci=0,del=false;
+(function type(){const w=roles[ri];tEl.textContent=del?w.slice(0,--ci):w.slice(0,++ci);let d=del?45:90;
+if(!del&&ci===w.length){d=1800;del=true}else if(del&&ci===0){del=false;ri=(ri+1)%roles.length;d=400}
+setTimeout(type,d)})();
+// Skills
+const skills=[
+ ['PHP / Laravel',95,'M4 7c0-1.66 3.58-3 8-3s8 1.34 8 3-3.58 3-8 3-8-1.34-8-3zM4 7v10c0 1.66 3.58 3 8 3s8-1.34 8-3V7'],
+ ['MySQL',90,'M4 7c0-1.66 3.58-3 8-3s8 1.34 8 3-3.58 3-8 3-8-1.34-8-3zM4 7v10c0 1.66 3.58 3 8 3s8-1.34 8-3V7'],
+ ['JavaScript',85,'M16 18l6-6-6-6M8 6l-6 6 6 6'],
+ ['HTML / CSS',95,'M13 10V3L4 14h7v7l9-11h-7z'],
+ ['Blade Templates',90,'M6 3v18M18 3v18M6 8h12M6 16h12'],
+ ['Git / GitHub',85,'M6 2l-4 4 4 4M2 6h14a4 4 0 010 8h-2'],
+ ['API Integration',80,'M4 12a8 8 0 018-8 8 8 0 018 8 8 8 0 01-8 8 8 8 0 01-8-8zm8-4v8m0 0l-3-3m3 3l3-3'],
+ ['REST APIs',80,'M4 6h16M4 12h16M4 18h10']
 ];
-const skillsGrid = document.getElementById('skillsGrid');
-skills.forEach(s => {
-  skillsGrid.insertAdjacentHTML('beforeend', `
-    <div class="card-hover rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5">
-      <div class="flex items-center justify-between mb-3">
-        <div class="flex items-center gap-3">
-          <div class="w-9 h-9 rounded-lg bg-brand-50 dark:bg-brand-500/10 text-brand-600 dark:text-brand-400 flex items-center justify-center">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="${s.icon}"/></svg>
-          </div>
-          <p class="font-semibold text-sm">${s.name}</p>
-        </div>
-        <span class="text-xs font-bold text-brand-600 dark:text-brand-400">${s.level}%</span>
-      </div>
-      <div class="h-2 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
-        <div class="skill-bar h-full rounded-full bg-gradient-to-r from-brand-500 to-purple-500" data-level="${s.level}" style="width:0"></div>
-      </div>
-    </div>`);
-});
-
-// ---------- Projects ----------
-const projects = [
-  { title: 'LifeDrop', tag: 'web-app', desc: 'Blood donation platform connecting donors with patients across Bangladesh. Laravel + Blade, OTP phone verification, dynamic search.', tech: ['Laravel', 'Blade', 'Twilio'], url: 'https://github.com/rabinmia975/LifeDrop', accent: 'from-red-500 to-rose-500' },
-  { title: 'MakersBD E-commerce', tag: 'web-app', desc: 'E-commerce platform built with Laravel and Blade templates with product catalog and cart.', tech: ['Laravel', 'Blade', 'MySQL'], url: 'https://github.com/rabinmia975/makersbd-ecom', accent: 'from-brand-500 to-cyan-500' },
-  { title: 'Task Management System', tag: 'web-app', desc: 'Simple and efficient task management system built with Laravel for teams and individuals.', tech: ['Laravel', 'PHP', 'MySQL'], url: 'https://github.com/rabinmia975/task-management-system', accent: 'from-emerald-500 to-teal-500' },
-  { title: 'Saimum Chamber', tag: 'booking', desc: 'Companies & individuals services booking platform with appointment management.', tech: ['HTML', 'CSS', 'JavaScript'], url: 'https://github.com/rabinmia975/saimum-chamber', accent: 'from-amber-500 to-orange-500' },
-  { title: 'BuyOneBD', tag: 'ecommerce', desc: 'E-commerce site design, fully responsive HTML build for the Bangladeshi market.', tech: ['HTML', 'CSS', 'JavaScript'], url: 'https://github.com/rabinmia975/buyonebd-html', accent: 'from-purple-500 to-fuchsia-500' },
-  { title: 'RiseWorks Integration', tag: 'integration', desc: 'B2B payroll/payment API integration — wallet-based auth, webhooks, sandbox testing.', tech: ['API', 'Webhooks', 'Node.js'], url: 'https://github.com/AsAboveFunding', accent: 'from-slate-500 to-slate-700' },
+const sg=document.getElementById('skillsGrid');
+skills.forEach(s=>{const d=document.createElement('div');d.className='skill-card';
+d.innerHTML=`<div class="skill-head"><div class="skill-name"><div class="skill-ico"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="${s[2]}"/></svg></div>${s[0]}</div><span class="skill-pct">${s[1]}%</span></div><div class="bar"><div class="bar-fill" data-level="${s[1]}"></div></div>`;
+sg.appendChild(d)});
+// Projects
+const projects=[
+ {title:'LifeDrop',tag:'web-app',desc:'Blood donation platform connecting donors with patients across Bangladesh. Laravel + Blade, OTP phone verification, dynamic search.',tech:['Laravel','Blade','Twilio'],url:'https://github.com/rabinmia975/LifeDrop',grad:'linear-gradient(135deg,#ef4444,#f43f5e)'},
+ {title:'MakersBD E-commerce',tag:'web-app',desc:'E-commerce platform built with Laravel and Blade templates with product catalog and cart.',tech:['Laravel','Blade','MySQL'],url:'https://github.com/rabinmia975/makersbd-ecom',grad:'linear-gradient(135deg,#3370ff,#06b6d4)'},
+ {title:'Task Management System',tag:'web-app',desc:'Simple and efficient task management system built with Laravel for teams and individuals.',tech:['Laravel','PHP','MySQL'],url:'https://github.com/rabinmia975/task-management-system',grad:'linear-gradient(135deg,#10b981,#14b8a6)'},
+ {title:'Saimum Chamber',tag:'booking',desc:'Companies & individuals services booking platform with appointment management.',tech:['HTML','CSS','JavaScript'],url:'https://github.com/rabinmia975/saimum-chamber',grad:'linear-gradient(135deg,#f59e0b,#f97316)'},
+ {title:'BuyOneBD',tag:'ecommerce',desc:'E-commerce site design, fully responsive HTML build for the Bangladeshi market.',tech:['HTML','CSS','JavaScript'],url:'https://github.com/rabinmia975/buyonebd-html',grad:'linear-gradient(135deg,#a855f7,#d946ef)'},
+ {title:'RiseWorks Integration',tag:'integration',desc:'B2B payroll/payment API integration — wallet-based auth, webhooks, sandbox testing.',tech:['API','Webhooks','Node.js'],url:'https://github.com/AsAboveFunding',grad:'linear-gradient(135deg,#64748b,#334155)'}
 ];
-const tags = [{ key: 'all', label: 'All' }, { key: 'web-app', label: 'Web Apps' }, { key: 'ecommerce', label: 'E-commerce' }, { key: 'booking', label: 'Booking' }, { key: 'integration', label: 'Integrations' }];
-const filterBtns = document.getElementById('filterBtns');
-const projectsGrid = document.getElementById('projectsGrid');
-
-function renderProjects(filter = 'all') {
-  projectsGrid.innerHTML = '';
-  projects.filter(p => filter === 'all' || p.tag === filter).forEach(p => {
-    projectsGrid.insertAdjacentHTML('beforeend', `
-      <a href="${p.url}" target="_blank" rel="noopener" class="card-hover group rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden block">
-        <div class="h-36 bg-gradient-to-br ${p.accent} flex items-center justify-center">
-          <span class="text-4xl font-extrabold text-white/90 tracking-tight group-hover:scale-110 transition-transform duration-300">${p.title.split(' ').map(w => w[0]).join('')}</span>
-        </div>
-        <div class="p-5">
-          <div class="flex items-center justify-between mb-2">
-            <h3 class="font-bold">${p.title}</h3>
-            <svg class="w-4 h-4 text-slate-400 group-hover:text-brand-500 transition" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H8M17 7v9"/></svg>
-          </div>
-          <p class="text-sm text-slate-500 dark:text-slate-400 mb-4 leading-relaxed">${p.desc}</p>
-          <div class="flex flex-wrap gap-2">
-            ${p.tech.map(t => `<span class="text-xs font-medium px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">${t}</span>`).join('')}
-          </div>
-        </div>
-      </a>`);
-  });
-}
-tags.forEach((t, i) => {
-  const b = document.createElement('button');
-  b.textContent = t.label;
-  b.className = i === 0
-    ? 'px-4 py-1.5 rounded-full text-sm font-semibold bg-brand-600 text-white'
-    : 'px-4 py-1.5 rounded-full text-sm font-semibold border border-slate-300 dark:border-slate-700 hover:border-brand-500 hover:text-brand-500 transition';
-  b.addEventListener('click', () => {
-    document.querySelectorAll('#filterBtns button').forEach(x => x.className = 'px-4 py-1.5 rounded-full text-sm font-semibold border border-slate-300 dark:border-slate-700 hover:border-brand-500 hover:text-brand-500 transition');
-    b.className = 'px-4 py-1.5 rounded-full text-sm font-semibold bg-brand-600 text-white';
-    renderProjects(t.key);
-  });
-  filterBtns.appendChild(b);
-});
-renderProjects();
-
-// ---------- Scroll reveal + skill bars ----------
-const io = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-      e.target.querySelectorAll('.skill-bar').forEach(bar => {
-        bar.style.transition = 'width 1.2s ease-out .2s';
-        bar.style.width = bar.dataset.level + '%';
-      });
-      io.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.15 });
-document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
-document.querySelectorAll('#skillsGrid').forEach(el => io.observe(el));
-
-// ---------- Contact form ----------
-document.getElementById('contactForm').addEventListener('submit', e => {
-  e.preventDefault();
-  const f = e.target;
-  const note = document.getElementById('formNote');
-  const body = encodeURIComponent(`Name: ${f.name.value}\n\n${f.message.value}`);
-  window.location.href = `mailto:shohag@asabovefunding.com?subject=${encodeURIComponent('Portfolio Contact from ' + f.name.value)}&body=${body}`;
-  note.textContent = 'Opening your email app to send the message — thanks for reaching out!';
-  note.classList.remove('hidden');
-  f.reset();
-});
-
-document.getElementById('year').textContent = new Date().getFullYear();
+const tags=[['all','All'],['web-app','Web Apps'],['ecommerce','E-commerce'],['booking','Booking'],['integration','Integrations']];
+const fb=document.getElementById('filterBtns'),pg=document.getElementById('projectsGrid');
+function render(f='all'){pg.innerHTML='';projects.filter(p=>f==='all'||p.tag===f).forEach(p=>{
+const a=document.createElement('a');a.href=p.url;a.target='_blank';a.rel='noopener';a.className='proj-card';
+a.innerHTML=`<div class="proj-cover" style="background:${p.grad}"><span>${p.title.split(' ').map(w=>w[0]).join('')}</span></div><div class="proj-body"><div class="proj-title-row"><h3>${p.title}</h3><svg class="proj-arrow" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H8M17 7v9"/></svg></div><p class="proj-desc">${p.desc}</p><div class="tags">${p.tech.map(t=>`<span class="tag">${t}</span>`).join('')}</div></div>`;
+pg.appendChild(a)})}
+tags.forEach((t,i)=>{const b=document.createElement('button');b.textContent=t[1];b.className='chip'+(i===0?' active':'');
+b.addEventListener('click',()=>{fb.querySelectorAll('.chip').forEach(x=>x.className='chip');b.className='chip active';render(t[0])});
+fb.appendChild(b)});
+render();
+// Reveal + bars
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){
+e.target.querySelectorAll('.bar-fill').forEach(b=>b.style.width=b.dataset.level+'%');
+e.target.classList.add('visible');io.unobserve(e.target)})},{threshold:.15});
+document.querySelectorAll('.fade-up').forEach(el=>io.observe(el));
+// Contact
+document.getElementById('contactForm').addEventListener('submit',e=>{
+e.preventDefault();const f=e.target,note=document.getElementById('formNote');
+const body=encodeURIComponent(`Name: ${f.name.value}\n\n${f.message.value}`);
+location.href=`mailto:shohag@asabovefunding.com?subject=${encodeURIComponent('Portfolio Contact from '+f.name.value)}&body=${body}`;
+note.textContent='Opening your email app to send the message — thanks for reaching out!';note.style.display='block';f.reset()});
+document.getElementById('year').textContent=new Date().getFullYear();
 </script>
 </body>
 </html>
