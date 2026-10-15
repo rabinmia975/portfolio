@@ -71,7 +71,7 @@
 </nav>
 
 <!-- Hero (Reeni style) -->
-<header id="home" class="relative overflow-hidden pt-28 pb-16 px-4 sm:px-6">
+<header id="home" class="relative overflow-hidden pt-28 pb-16 px-4 sm:px-6 scroll-mt-20">
   <div class="blob w-[500px] h-[500px] bg-brand-500 -top-40 -left-40"></div>
   <div class="blob blob-2 w-[420px] h-[420px] bg-brand-500 top-24 -right-32"></div>
   <div class="max-w-7xl mx-auto relative grid lg:grid-cols-12 gap-10 items-center">
@@ -143,7 +143,7 @@
 </section>
 
 <!-- About -->
-<section id="about" class="py-20 px-4 sm:px-6">
+<section id="about" class="py-20 px-4 sm:px-6 scroll-mt-20">
   <div class="max-w-7xl mx-auto">
     <div class="fade-up mb-12">
       <p class="text-xs font-bold tracking-[0.3em] text-brand-500 mb-2">WHO I AM</p>
@@ -174,7 +174,7 @@
 </section>
 
 <!-- Skills -->
-<section id="skills" class="py-20 px-4 sm:px-6 border-t border-[#161616]">
+<section id="skills" class="py-20 px-4 sm:px-6 border-t border-[#161616] scroll-mt-20">
   <div class="max-w-7xl mx-auto">
     <div class="fade-up mb-12">
       <p class="text-xs font-bold tracking-[0.3em] text-brand-500 mb-2">MY EXPERTISE</p>
@@ -194,7 +194,7 @@
 </section>
 
 <!-- Projects -->
-<section id="projects" class="py-20 px-4 sm:px-6 border-t border-[#161616]">
+<section id="projects" class="py-20 px-4 sm:px-6 border-t border-[#161616] scroll-mt-20">
   <div class="max-w-7xl mx-auto">
     <div class="fade-up flex flex-wrap items-end justify-between gap-4 mb-12">
       <div>
@@ -208,7 +208,7 @@
 </section>
 
 <!-- Contact -->
-<section id="contact" class="relative overflow-hidden py-20 px-4 sm:px-6 border-t border-[#161616]">
+<section id="contact" class="relative overflow-hidden py-20 px-4 sm:px-6 border-t border-[#161616] scroll-mt-20">
   <div class="blob w-96 h-96 bg-brand-500 -top-20 left-1/4"></div>
   <div class="max-w-3xl mx-auto relative text-center fade-up">
     <p class="text-xs font-bold tracking-[0.3em] text-brand-500 mb-2">CONTACT</p>
@@ -329,6 +329,13 @@ document.getElementById('contactForm').addEventListener('submit',function(e){
  location.href='mailto:rabinmia795@gmail.com?subject='+encodeURIComponent('Portfolio Contact from '+f.name.value)+'&body='+body;
  note.textContent='Opening your email app to send the message — thanks for reaching out!';
  note.classList.remove('hidden');f.reset()});
+document.querySelectorAll('a[href^="#"]').forEach(function(a){
+ a.addEventListener('click',function(e){
+  var id=a.getAttribute('href').slice(1);
+  var el=document.getElementById(id);
+  if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'});
+   if(history.replaceState)history.replaceState(null,'','#'+id)}
+ })});
 document.getElementById('year').textContent=new Date().getFullYear();
 </script>
 </body>
